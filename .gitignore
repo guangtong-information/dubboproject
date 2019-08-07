@@ -1,0 +1,29 @@
+*.jar
+*.war
+*.class
+*.lock
+*.DS_Store
+*.swp
+*.out
+target/
+*.iml
+*.ipr
+*.iws
+*.bak
+.settings/
+.classpath
+.project
+.metadata/
+.idea/
+logs/
+*.log
+dependency-reduced-pom.xml
+/bin
+git
+git.pub
+.dubbo/
+/*.iml
+<<<<<<< HEAD
+
+=======
+>>>>>>> 65d0c73f7210ec6f1174a7ddf95b68cf6af49eff
