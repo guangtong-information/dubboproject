@@ -3,12 +3,14 @@ package com.ypy.dubbo.commoninterface.bean;
 import lombok.Data;
 import lombok.ToString;
 
+import java.io.Serializable;
+
 /**
  * 用户地址
  */
 @Data
 @ToString
-public class UserAddress {
+public class UserAddress implements Serializable {
 
     private Integer id;
     private String userAddress;//用户地址

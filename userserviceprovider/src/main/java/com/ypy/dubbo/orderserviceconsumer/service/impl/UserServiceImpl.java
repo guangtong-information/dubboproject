@@ -1,4 +1,4 @@
-package com.ypy.dubbo.userserviceproject.service.impl;
+package com.ypy.dubbo.orderserviceconsumer.service.impl;
 
 import com.ypy.dubbo.commoninterface.bean.UserAddress;
 import com.ypy.dubbo.commoninterface.service.UserService;

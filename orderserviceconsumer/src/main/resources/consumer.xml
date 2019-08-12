@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://dubbo.apache.org/schema/dubbo" xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans        http://www.springframework.org/schema/beans/spring-beans-4.3.xsd        http://dubbo.apache.org/schema/dubbo        http://dubbo.apache.org/schema/dubbo/dubbo.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--注意：增加dubbo的命名空间依赖-->
+    <!--xmlns:dubbo="http://dubbo.apache.org/schema/dubbo"-->
+
+    <!--注意：基于注解的方式：让spring去加载base-package下的bean到容器-->
+    <context:component-scan base-package="com.ypy.dubbo.orderserviceconsumer.service.impl"></context:component-scan>
+
+    <!--1.指定当前服务/应用的名称（同样的服务名称相同，不要和别的服务同名）-->
+    <dubbo:application name="orderserviceconsumer"></dubbo:application>
+
+    <!--2.指定注册中心的位置-->
+    <dubbo:registry address="zookeeper://127.0.0.1:2181"></dubbo:registry>
+
+    <!--3.声明需要调用的远程服务的接口-->
+    <!--为生成远程服务代理，可以和本地bean一样使用-->
+    <dubbo:reference id="userService" interface="com.ypy.dubbo.commoninterface.service.UserService"></dubbo:reference>
+</beans>

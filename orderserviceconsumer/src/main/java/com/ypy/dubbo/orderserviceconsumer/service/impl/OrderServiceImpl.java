@@ -1,13 +1,17 @@
-package com.ypy.dubbo.userserviceproject.service.impl;
+package com.ypy.dubbo.orderserviceconsumer.service.impl;
 
 import com.ypy.dubbo.commoninterface.bean.UserAddress;
 import com.ypy.dubbo.commoninterface.service.OrderService;
 import com.ypy.dubbo.commoninterface.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class OrderServiceImpl implements OrderService {
 
+    @Autowired
     private UserService userService;
 
     public void initOrder(String userId) {
