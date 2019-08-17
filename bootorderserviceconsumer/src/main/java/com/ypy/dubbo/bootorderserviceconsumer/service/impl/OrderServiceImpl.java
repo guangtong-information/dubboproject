@@ -35,9 +35,15 @@ public class OrderServiceImpl implements OrderService {
      * （1）当服务升级，为了兼容需求，可以根据版本号可以实现平滑过渡
      * （2）或者实现灰度发布的过程
      *
+     * 知识点18：本地存根 stub = "com.ypy.dubbo.gmallinterface.service.UserServiceStub"
+     *
+     * 知识点19【！！！注意！！！】：dubbo与springboot整合方式三的时候，测试只能使用@Reference，不要增加枚举参数
+     *
+     * 知识点20：dubbo直连，消费端直接访问服务提供者，绕过注册中心 url = "127.0.0.1:20880"
+     *
      */
 //    @Reference(check = false,timeout = 2000,retries = 2,version = "*")
-    @Reference(check = false,timeout = 2000,retries = 2,version = "1.0.0",stub = "com.ypy.dubbo.commoninterface.service.UserServiceStub")
+    @Reference(check = false,timeout = 2000,retries = 2,version = "1.0.0",stub = "com.ypy.dubbo.commoninterface.service.UserServiceStub",url = "127.0.0.1:20880")
 //    @Reference(check = false)
     private UserService userService;
 
