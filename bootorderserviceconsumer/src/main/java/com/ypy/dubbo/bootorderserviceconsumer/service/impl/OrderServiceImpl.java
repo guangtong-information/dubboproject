@@ -31,9 +31,13 @@ public class OrderServiceImpl implements OrderService {
      * （4）dubbo默认的重试次数为2
      * （5）重试次数一般和超时设置同时使用
      *
+     * 知识点17：多版本 version = "1.0.0" 或者 version = "1.1.0" 或者 version = "*"（随机调用）
+     * （1）当服务升级，为了兼容需求，可以根据版本号可以实现平滑过渡
+     * （2）或者实现灰度发布的过程
      *
      */
-    @Reference(check = false,timeout = 2000,retries = 2)
+//    @Reference(check = false,timeout = 2000,retries = 2,version = "*")
+    @Reference(check = false,timeout = 2000,retries = 2,version = "1.0.0")
 //    @Reference(check = false)
     private UserService userService;
 
