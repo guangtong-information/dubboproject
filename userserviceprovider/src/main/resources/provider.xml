@@ -20,7 +20,8 @@
     <!--4.暴露服务，提供给消费者调用-->
     <!--interface：提供给服务消费者调用的接口名称-->
     <!--ref：指向服务的真正实现对象-->
-    <dubbo:service interface="com.ypy.dubbo.commoninterface.service.UserService" ref="userServiceImpl"/>
+    <dubbo:service interface="com.ypy.dubbo.commoninterface.service.UserService" ref="userServiceImpl">
+    </dubbo:service>
 
     <!--服务的真正实现对象-->
     <bean id="userServiceImpl" class="com.ypy.dubbo.userserviceprovider.service.impl.UserServiceImpl"/>
