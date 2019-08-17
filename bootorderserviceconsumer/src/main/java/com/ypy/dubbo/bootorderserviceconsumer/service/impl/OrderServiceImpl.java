@@ -24,8 +24,12 @@ public class OrderServiceImpl implements OrderService {
      * （1）解决因为服务端一致没有响应的情况下，可能导致调用端大量线程的阻塞，可以设置服务超时时间。
      * （2）默认的超时时间为1s
      *
+     * 知识点16：重试次数 retries = 3
+     * （1）
+     *
      */
-    @Reference(check = false,timeout = 1000)
+//    @Reference(check = false,timeout = 2000)
+    @Reference(check = false)
     private UserService userService;
 
     @Override
