@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://dubbo.apache.org/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans        http://www.springframework.org/schema/beans/spring-beans-4.3.xsd        http://dubbo.apache.org/schema/dubbo        http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
+
+    <!--注意：增加dubbo的命名空间依赖-->
+    <!--xmlns:dubbo="http://dubbo.apache.org/schema/dubbo"-->
+
+    <!--1.指定当前服务/应用的名称（同样的服务名称相同，不要和别的服务同名）-->
+    <dubbo:application name="bootuserserviceprovider2"/>
+
+    <!--2.指定注册中心的位置-->
+    <!--参见官方帮助文档：http://dubbo.apache.org/zh-cn/docs/user/references/registry/zookeeper.html-->
+    <dubbo:registry address="zookeeper://127.0.0.1:2181" />
+    <!--<dubbo:registry protocol="zookeeper" address="127.0.0.1:2181" />-->
+
+    <!--3.指定通信规则（通信协议、通信端口）-->
+    <!--dubbo支持的协议参见官方帮助文档：http://dubbo.apache.org/zh-cn/docs/user/references/protocol/introduction.html-->
+    <!--使用dubbo协议，在20880端口，实现消费者和服务提供者之间通信-->
+    <dubbo:protocol name="dubbo" port="20880" />
+
+    <!--4.暴露服务，提供给消费者调用-->
+    <!--interface：提供给服务消费者调用的接口名称-->
+    <!--ref：指向服务的真正实现对象-->
+    <dubbo:service interface="com.ypy.dubbo.commoninterface.service.UserService" ref="userServiceImpl" version = "1.0.0">
+        <dubbo:method name="getUserAddressList"/>
+    </dubbo:service>
+
+    <!--服务的真正实现对象-->
+    <bean id="userServiceImpl" class="com.ypy.dubbo.bootuserserviceprovider3.service.impl.UserServiceImpl" />
+
+    <!--配置监控中心，有二种方式-->
+    <!--第一种：表示从注册中心发现监控中心地址【推荐写法】-->
+    <dubbo:monitor protocol="registry"></dubbo:monitor>
+    <!--第二种：直连监控中心，监控中心的监控端口为7070-->
+    <!--<dubbo:monitor address="127.0.0.1:7070"></dubbo:monitor>-->
+
+</beans>
