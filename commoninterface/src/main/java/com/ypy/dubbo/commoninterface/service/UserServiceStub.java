@@ -24,7 +24,7 @@ public class UserServiceStub implements UserService {
     @Override
     public List<UserAddress> getUserAddressList(String userId) {
         // 校验前置参数
-        if (userId != null && !userId.equals("")) {
+        if (userId != null && !userId.isEmpty()) {
             System.out.println("本地存根验证通过，继续调用服务提供方！");
             return userService.getUserAddressList(userId);
         }
