@@ -1,4 +1,4 @@
-package com.ypy.dubbo.orderserviceconsumer.service.impl;
+package com.ypy.dubbo.userserviceprovider.service.impl;
 
 import com.ypy.dubbo.commoninterface.bean.UserAddress;
 import com.ypy.dubbo.commoninterface.service.OrderService;
@@ -14,11 +14,11 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     private UserService userService;
 
-    public void initOrder(String userId) {
-        // 1.查询用户的收货地址
+    public List<UserAddress> initOrder(String userId) {
         List<UserAddress> userAddresses = userService.getUserAddressList(userId);
         for(UserAddress userAddress : userAddresses){
             System.out.println(userAddress);
         }
+        return userAddresses;
     }
 }

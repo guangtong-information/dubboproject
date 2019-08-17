@@ -1,4 +1,4 @@
-package com.ypy.dubbo.orderserviceconsumer.service;
+package com.ypy.dubbo.userserviceprovider;
 
 import com.ypy.dubbo.commoninterface.service.OrderService;
 import org.springframework.context.support.ClassPathXmlApplicationContext;

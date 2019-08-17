@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>dubboproject</artifactId>
+        <groupId>com.ypy.dubbo</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>bootuserserviceprovider</artifactId>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.ypy.dubbo</groupId>
+            <artifactId>commoninterface</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+        <!--注意：官方要求（Legacy Versions）： https://github.com/apache/incubator-dubbo-spring-boot-project-->
+        <!--springboot2.0版本以上，使用0.2.0版本的dubbo-spring-boot-starter-->
+        <!--springboot2.0版本以下，使用0.1.0版本的dubbo-spring-boot-starter-->
+        <!--dubbo-spring-boot-starter 会将其相关的依赖也导入，例如dubbo和curator-->
+        <dependency>
+            <groupId>com.alibaba.boot</groupId>
+            <artifactId>dubbo-spring-boot-starter</artifactId>
+            <version>0.2.0</version>
+        </dependency>
+    </dependencies>
+
+</project>
