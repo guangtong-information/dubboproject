@@ -24,12 +24,17 @@ public class OrderServiceImpl implements OrderService {
      * （1）解决因为服务端一致没有响应的情况下，可能导致调用端大量线程的阻塞，可以设置服务超时时间。
      * （2）默认的超时时间为1s
      *
-     * 知识点16：重试次数 retries = 3
-     * （1）
+     * 知识点16：重试次数 retries = 2（默认为）
+     * （1）因为网络等原因，服务调用失败的时候，服务会重新调用
+     * （2）当服务提供者有多个的时候，会分别取调用，不会再一棵树上吊死
+     * （3）幂等性的操作，例如查询、修改和删除，才可以加重试次数
+     * （4）dubbo默认的重试次数为2
+     * （5）重试次数一般和超时设置同时使用
+     *
      *
      */
-//    @Reference(check = false,timeout = 2000)
-    @Reference(check = false)
+    @Reference(check = false,timeout = 2000,retries = 2)
+//    @Reference(check = false)
     private UserService userService;
 
     @Override
