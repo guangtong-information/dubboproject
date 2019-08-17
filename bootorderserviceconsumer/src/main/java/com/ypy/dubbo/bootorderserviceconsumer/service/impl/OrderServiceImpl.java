@@ -37,7 +37,7 @@ public class OrderServiceImpl implements OrderService {
      *
      */
 //    @Reference(check = false,timeout = 2000,retries = 2,version = "*")
-    @Reference(check = false,timeout = 2000,retries = 2,version = "1.0.0")
+    @Reference(check = false,timeout = 2000,retries = 2,version = "1.0.0",stub = "com.ypy.dubbo.commoninterface.service.UserServiceStub")
 //    @Reference(check = false)
     private UserService userService;
 
