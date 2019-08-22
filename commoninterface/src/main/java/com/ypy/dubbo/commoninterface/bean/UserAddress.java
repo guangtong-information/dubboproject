@@ -12,6 +12,11 @@ import java.io.Serializable;
 @ToString
 public class UserAddress implements Serializable {
 
+    /**
+     * 强烈建议大家定义serialVersionUID
+     */
+    private static final long serialVersionUID = -1868490861096776724L;
+
     private Integer id;
     private String userAddress;//用户地址
     private String userId;//用户id
