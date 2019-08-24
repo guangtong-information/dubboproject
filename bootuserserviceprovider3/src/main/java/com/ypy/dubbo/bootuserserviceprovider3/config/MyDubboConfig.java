@@ -19,7 +19,7 @@ public class MyDubboConfig {
     @Bean
     public ApplicationConfig applicationConfig(){
         ApplicationConfig applicationConfig = new ApplicationConfig();
-        applicationConfig.setName("bootuserserviceprovider2");
+        applicationConfig.setName("bootuserserviceprovider3");
         return applicationConfig;
     }
 
@@ -37,7 +37,7 @@ public class MyDubboConfig {
     public ProtocolConfig protocolConfig(){
         ProtocolConfig protocolConfig = new ProtocolConfig();
         protocolConfig.setName("dubbo");
-        protocolConfig.setPort(20080);
+        protocolConfig.setPort(20083);
         return protocolConfig;
     }
 
