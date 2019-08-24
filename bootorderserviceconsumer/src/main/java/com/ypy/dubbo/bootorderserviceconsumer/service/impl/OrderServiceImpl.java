@@ -1,11 +1,13 @@
 package com.ypy.dubbo.bootorderserviceconsumer.service.impl;
 
 import com.alibaba.dubbo.config.annotation.Reference;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.ypy.dubbo.commoninterface.bean.UserAddress;
 import com.ypy.dubbo.commoninterface.service.OrderService;
 import com.ypy.dubbo.commoninterface.service.UserService;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -52,7 +54,8 @@ public class OrderServiceImpl implements OrderService {
      * 目的：都是为了通过服务降级功能临时屏蔽某个出错的非关键服务，从而保证核心服务不受影响！
      *
      * 知识点23：服务容错
-     *
+     * （1）服务端容错
+     * （2）客户端容错
      */
 //    @Reference(check = false,timeout = 2000,retries = 2,version = "*")
 //    @Reference(check = false,timeout = 2000,retries = 2,version = "1.0.0",stub = "com.ypy.dubbo.commoninterface.service.UserServiceStub",url = "127.0.0.1:20880")
@@ -61,6 +64,7 @@ public class OrderServiceImpl implements OrderService {
     private UserService userService;
 
     @Override
+    @HystrixCommand(fallbackMethod = "initOrderFallbackMethod")
     public List<UserAddress> initOrder(String userId) {
         // 需要查询用户的收货地址
         List<UserAddress> userAddresses = userService.getUserAddressList(userId);
@@ -71,5 +75,9 @@ public class OrderServiceImpl implements OrderService {
         }
 
         return userAddresses;
+    }
+
+    public List<UserAddress> initOrderFallbackMethod(){
+        return Arrays.asList(new UserAddress(10,"测试地址","1","测试","测试","Y"));
     }
 }
