@@ -2,11 +2,9 @@ package com.ypy.dubbo.bootuserserviceprovider3.config;
 
 import com.alibaba.dubbo.config.*;
 import com.ypy.dubbo.commoninterface.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,7 +19,7 @@ public class MyDubboConfig {
     @Bean
     public ApplicationConfig applicationConfig(){
         ApplicationConfig applicationConfig = new ApplicationConfig();
-        applicationConfig.setName("bootuserserviceprovider3");
+        applicationConfig.setName("bootuserserviceprovider2");
         return applicationConfig;
     }
 

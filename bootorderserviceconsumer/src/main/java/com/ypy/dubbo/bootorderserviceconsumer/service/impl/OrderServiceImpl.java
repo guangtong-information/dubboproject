@@ -42,8 +42,8 @@ public class OrderServiceImpl implements OrderService {
      * 知识点20：dubbo直连，消费端直接访问服务提供者，绕过注册中心 url = "127.0.0.1:20880"
      *
      * 知识点21：负载均衡机制
-     * （1）loadbalance = “random”，于权重的随机负载均衡机制（默认负载均衡策略）
-     * （2）loadbalance = "roundrobin"，于权重的轮询负载均衡机制
+     * （1）loadbalance = “random”，基于权重的随机负载均衡机制（默认负载均衡策略）
+     * （2）loadbalance = "roundrobin"，基于权重的轮询负载均衡机制
      * （3）loadbalance = "leastactive"，最少活跃数负载均衡（挑选上一次请求调用时间最少的访问）
      *
      */

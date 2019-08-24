@@ -1,4 +1,4 @@
-package com.ypy.dubbo.bootuserserviceprovider3;
+package com.ypy.dubbo.bootuserserviceprovider2;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
