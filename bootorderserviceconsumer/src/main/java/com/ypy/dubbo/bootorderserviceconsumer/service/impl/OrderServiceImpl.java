@@ -7,6 +7,7 @@ import com.ypy.dubbo.commoninterface.service.OrderService;
 import com.ypy.dubbo.commoninterface.service.UserService;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -53,9 +54,9 @@ public class OrderServiceImpl implements OrderService {
      * （2）容错：当客户端调用服务端出错额时候，服务端直接返回空！
      * 目的：都是为了通过服务降级功能临时屏蔽某个出错的非关键服务，从而保证核心服务不受影响！
      *
-     * 知识点23：服务容错
-     * （1）服务端容错
-     * （2）客户端容错
+     * 知识点23：集群服务容错（Hystrix）
+     * （1）服务端容错配置
+     * （2）客户端容错配置
      */
 //    @Reference(check = false,timeout = 2000,retries = 2,version = "*")
 //    @Reference(check = false,timeout = 2000,retries = 2,version = "1.0.0",stub = "com.ypy.dubbo.commoninterface.service.UserServiceStub",url = "127.0.0.1:20880")
@@ -77,7 +78,15 @@ public class OrderServiceImpl implements OrderService {
         return userAddresses;
     }
 
-    public List<UserAddress> initOrderFallbackMethod(){
-        return Arrays.asList(new UserAddress(10,"测试地址","1","测试","测试","Y"));
+    /**
+     * 注意：一定要带参数，否则Hystrix会提示找不到method
+     * @param userId
+     * @return
+     */
+    public List<UserAddress> initOrderFallbackMethod(String userId){
+        List<UserAddress> userAddresses = new ArrayList<>();
+        UserAddress userAddress = new UserAddress(0,"error","error","error","error","error");
+        userAddresses.add(userAddress);
+        return userAddresses;
     }
 }
