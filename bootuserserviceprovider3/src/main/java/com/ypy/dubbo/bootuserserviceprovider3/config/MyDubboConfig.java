@@ -37,7 +37,7 @@ public class MyDubboConfig {
     public ProtocolConfig protocolConfig(){
         ProtocolConfig protocolConfig = new ProtocolConfig();
         protocolConfig.setName("dubbo");
-        protocolConfig.setPort(20083);
+        protocolConfig.setPort(20080);
         return protocolConfig;
     }
 

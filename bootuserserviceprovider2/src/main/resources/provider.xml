@@ -18,7 +18,7 @@
     <!--3.指定通信规则（通信协议、通信端口）-->
     <!--dubbo支持的协议参见官方帮助文档：http://dubbo.apache.org/zh-cn/docs/user/references/protocol/introduction.html-->
     <!--使用dubbo协议，在20880端口，实现消费者和服务提供者之间通信-->
-    <dubbo:protocol name="dubbo" port="20882" />
+    <dubbo:protocol name="dubbo" port="20880" />
 
     <!--4.暴露服务，提供给消费者调用-->
     <!--interface：提供给服务消费者调用的接口名称-->
