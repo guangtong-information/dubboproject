@@ -26,11 +26,11 @@ public class UserServiceImpl implements UserService {
         /**
          * 模拟dubbo超时属性的设置
          */
-        /*try {
+        try {
             Thread.sleep(3000);
         } catch (Exception e){
 
-        }*/
+        }
 
         return Arrays.asList(userAddress1,userAddress2);
     }

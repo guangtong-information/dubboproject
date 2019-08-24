@@ -46,6 +46,13 @@ public class OrderServiceImpl implements OrderService {
      * （2）loadbalance = "roundrobin"，基于权重的轮询负载均衡机制
      * （3）loadbalance = "leastactive"，最少活跃数负载均衡（挑选上一次请求调用时间最少的访问）
      *
+     * 知识点22：服务降级
+     * （1）屏蔽：客户端直接屏蔽，不在调用服务端，直接强制返回空!
+     * （2）容错：当客户端调用服务端出错额时候，服务端直接返回空！
+     * 目的：都是为了通过服务降级功能临时屏蔽某个出错的非关键服务，从而保证核心服务不受影响！
+     *
+     * 知识点23：服务容错
+     *
      */
 //    @Reference(check = false,timeout = 2000,retries = 2,version = "*")
 //    @Reference(check = false,timeout = 2000,retries = 2,version = "1.0.0",stub = "com.ypy.dubbo.commoninterface.service.UserServiceStub",url = "127.0.0.1:20880")
@@ -57,9 +64,12 @@ public class OrderServiceImpl implements OrderService {
     public List<UserAddress> initOrder(String userId) {
         // 需要查询用户的收货地址
         List<UserAddress> userAddresses = userService.getUserAddressList(userId);
-        for(UserAddress userAddress : userAddresses){
-            System.out.println(userAddress);
+        if (userAddresses != null) {
+            for(UserAddress userAddress : userAddresses){
+                System.out.println(userAddress);
+            }
         }
+
         return userAddresses;
     }
 }
