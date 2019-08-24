@@ -11,7 +11,8 @@ import java.util.List;
  * 使用注解的方式，将dubbo的服务暴露出去
  */
 //@Service(timeout = 2000)
-@Service(version = "1.0.0")
+//@Service(version = "1.0.0")
+@Service
 public class UserServiceImpl implements UserService {
 
     public List<UserAddress> getUserAddressList(String userId) {
